@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="基本语法1.输入输出语句alert（msg）：浏览器弹出警示框 console.log（msg）：浏览器控制台打印输出信息 prompt（info）：浏00览器弹出输入框，用户可以输入 2.变量声明+赋值：var name&#x3D;value； js中变量不声明直接赋值也可以使用，只声明不赋值是undefined的 命名规范：相较于C，多了一个$可以加入变量名中 3.数据类型js的变量数据类型是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript笔记">
+<meta property="og:url" content="http://example.com/2022/06/08/JavaScript/index.html">
+<meta property="og:site_name" content="Little World">
+<meta property="og:description" content="基本语法1.输入输出语句alert（msg）：浏览器弹出警示框 console.log（msg）：浏览器控制台打印输出信息 prompt（info）：浏00览器弹出输入框，用户可以输入 2.变量声明+赋值：var name&#x3D;value； js中变量不声明直接赋值也可以使用，只声明不赋值是undefined的 命名规范：相较于C，多了一个$可以加入变量名中 3.数据类型js的变量数据类型是">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-11T06:14:43.331Z">
+<meta property="article:author" content="Mr Wang">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/06/08/JavaScript/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaScript笔记 | Little World</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Little World</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="fa fa-hashtag fa-fw"></i>资源</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/08/JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pig.jpg">
+      <meta itemprop="name" content="Mr Wang">
+      <meta itemprop="description" content="stu（dying）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Little World">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-06-08 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-08T00:00:00+08:00">2022-06-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-11 14:14:43" itemprop="dateModified" datetime="2022-06-11T14:14:43+08:00">2022-06-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs/" itemprop="url" rel="index"><span itemprop="name">cs</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="1-输入输出语句"><a href="#1-输入输出语句" class="headerlink" title="1.输入输出语句"></a>1.输入输出语句</h2><p>alert（msg）：浏览器弹出警示框</p>
+<p>console.log（msg）：浏览器控制台打印输出信息</p>
+<p>prompt（info）：浏00览器弹出输入框，用户可以输入</p>
+<h2 id="2-变量"><a href="#2-变量" class="headerlink" title="2.变量"></a>2.变量</h2><p>声明+赋值：var name&#x3D;value；</p>
+<p>js中变量不声明直接赋值也可以使用，只声明不赋值是undefined的</p>
+<p>命名规范：相较于C，多了一个$可以加入变量名中</p>
+<h2 id="3-数据类型"><a href="#3-数据类型" class="headerlink" title="3.数据类型"></a>3.数据类型</h2><p>js的变量数据类型是在程序运行时根据value来确定的</p>
+<p>简单数据类型：<br>number、boolean、string、undefined、null<br>number：数字前面加 0表示八进制，0x表示十六进制，Number.Max(MIN)_VALUE表示最大值和最小值，-Infinity表示(负)无穷大，NaN表示一个非数值，isNuN( )这个方法用来判断非数字，并且返回一个值，如果是数字返回false……</p>
+<p>boolean：true和false参与加法运算当作1和0来看</p>
+<p>string：字符串转义符（\n、\ \、\‘、\“、\t、\b）name.length获取长度   字符串+任何数据类型&#x3D;字符串</p>
+<p>undefined：于数字相加最后的结果是NaN</p>
+<p>复杂数据类型：object</p>
+<p>typeof name用于检测数据类型</p>
+<p>数据类型转换：</p>
+<p>转换为字符串：name.toString()、String(name)、加号拼接</p>
+<p>转换为数字：parselnt（string）、parseFloat（string）、Number(string)、js隐式转换（- * &#x2F;）</p>
+<p>转换为布尔型：Boolean（type）代表空、否定的值会被转换为false，如’‘、0、NaN、null、undefined，其他为true</p>
+<h2 id="4-运算符"><a href="#4-运算符" class="headerlink" title="4.运算符"></a>4.运算符</h2><p>算术运算符：+-*&#x2F;%，我们不能直接拿浮点数来进行相比较是否相等，浮点数在运算时会有精度上的误差</p>
+<p>递增和递减运算符：++、- -</p>
+<p>比较运算符：&lt;  &gt;  &gt;&#x3D;  &lt;&#x3D;  &#x3D;&#x3D;(默认转型，会把字符串类型转换为数字型)  !&#x3D;  &#x3D;&#x3D;&#x3D;(要求值和数据类型都一致)  !&#x3D;&#x3D;&#x3D;</p>
+<p>逻辑运算符：&amp;&amp;、||、！逻辑中断：但有多个表达式或值时，左边的表达式值可以确定结果，就不再继续运算右边的表达式的值<br>逻辑与中断：如果表达式1为true，返回表达式2；else返回表达式1……</p>
+<p>赋值运算符：&#x3D;、+&#x3D;、-&#x3D;、*&#x3D;、%&#x3D;、&#x2F;&#x3D;</p>
+<p>运算符优先级：</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>顺序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小括号</td>
+<td>（）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>一元运算符</td>
+<td>++   - -</td>
+</tr>
+<tr>
+<td>3</td>
+<td>算数运算符</td>
+<td>先* &#x2F; %后 + -</td>
+</tr>
+<tr>
+<td>4</td>
+<td>关系运算符</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>5</td>
+<td>相等运算符</td>
+<td>&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>逻辑运算符</td>
+<td>先&amp;&amp;后||</td>
+</tr>
+<tr>
+<td>7</td>
+<td>赋值运算符</td>
+<td>&#x3D;</td>
+</tr>
+<tr>
+<td>8</td>
+<td>逗号运算符</td>
+<td>，</td>
+</tr>
+</tbody></table>
+<h2 id="5-选择语句"><a href="#5-选择语句" class="headerlink" title="5.选择语句"></a>5.选择语句</h2><p>if(条件表达式) {</p>
+<p>} else if(条件表达式) {</p>
+<p>} ……else {</p>
+<p>}</p>
+<p>三元表达式：条件表达式？表达式1：表达式2</p>
+<p>switch(表达式) {</p>
+<p>​	case value：</p>
+<p>……</p>
+<p>}</p>
+<h2 id="6-循环语句"><a href="#6-循环语句" class="headerlink" title="6.循环语句"></a>6.循环语句</h2><p>for、while、do while、continue、break</p>
+<h2 id="7-数组"><a href="#7-数组" class="headerlink" title="7.数组"></a>7.数组</h2><p>创建数组：利用new创建 var name &#x3D; new Array( ) ;<br>                 利用数组字面量创建数组  var name &#x3D; [ ] ; [ ]里面可以放任何类型</p>
+<p>获取数组元素：name[number]</p>
+<p>遍历数组：利用循环</p>
+<p>数组长度：name.length</p>
+<p>新增数组元素：利用name.length直接改；利用索引号</p>
+<h2 id="8-函数"><a href="#8-函数" class="headerlink" title="8.函数"></a>8.函数</h2><p>声明函数：function name（）{ }</p>
+<p>调用函数：name（）；</p>
+<p>形参可以看作不用声明的变量</p>
+<p>如果实参个数小于形参个数，未赋值到的变量为undefined，结果为M&#x3D;NaN</p>
+<p>如果return后面没有值，返回undefined</p>
+<p>arguments的使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">会输出<span class="number">1</span>，<span class="number">2</span>，<span class="number">3</span></span><br><span class="line"><span class="variable language_">arguments</span>里面存储了所有传递过来的实参</span><br><span class="line"><span class="number">1.</span>具有length</span><br><span class="line"><span class="number">2.</span>按照索引方式存储</span><br><span class="line"><span class="number">3.</span>它没有数组的一些方法：<span class="title function_">pop</span>()	<span class="title function_">push</span>()</span><br></pre></td></tr></table></figure>
+
+<p>另一种函数的声明方式<br>var 变量名&#x3D;function（）{ }；</p>
+<h2 id="9-作用域"><a href="#9-作用域" class="headerlink" title="9.作用域"></a>9.作用域</h2><p>全局作用域和局部作用域</p>
+<p>全局变量和局部变量(函数内部)</p>
+<p>js没有块级作用域，在es6新增块级作用域</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="number">3</span>&lt;<span class="number">5</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">var</span> num=<span class="number">10</span>;        </span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num);</span><br></pre></td></tr></table></figure>
+
+<p>作用域链（就近原则）</p>
+<h2 id="10-对象"><a href="#10-对象" class="headerlink" title="10.对象"></a>10.对象</h2><p>创建对象的三种方式：</p>
+<ul>
+<li><p>用字面量创建对象<br>var obj&#x3D;{</p>
+<p>​	uname：‘张三’，</p>
+<p>​	age：18，</p>
+<p>​	sayHi：function（）{</p>
+<p>​		console.log（‘hi’）；</p>
+<p>​	}<br>}</p>
+</li>
+<li><p>利用new Object创建对象<br>var obj &#x3D; new Object（）；</p>
+</li>
+<li><p>利用构造函数创建对象（函数名首字母大写）<br>function 构造函数名（形参）{</p>
+<p>​		this.属性 &#x3D; 值；</p>
+<p>​		this.方法 &#x3D; function（）{}</p>
+<p>}<br>var 对象名 &#x3D; new 构造函数名（实参）；</p>
+</li>
+</ul>
+<p>调用对象：对象名.属性名；对象名[‘属性名’]；对象名.方法名()</p>
+<p>遍历对象：</p>
+<p>for  in<br>for（变量 in 对象）{	</p>
+<p>​		console.log（变量）；得到属性</p>
+<p>​		console.log（对象名[变量]）；得到属性值</p>
+<p>}</p>
+<h2 id="11-内置对象"><a href="#11-内置对象" class="headerlink" title="11.内置对象"></a>11.内置对象</h2><p>MDN查阅文档</p>
+<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-DOM树"><a href="#1-DOM树" class="headerlink" title="1.DOM树"></a>1.DOM树</h2><p>文档（一个页面document），元素（所有标签element），节点（所有内容都是node）</p>
+<h2 id="2-获取元素"><a href="#2-获取元素" class="headerlink" title="2.获取元素"></a>2.获取元素</h2><ul>
+<li>根据id获取<br>getElementById（）；<br>var 对象名 &#x3D; document.getElementById（id）；（id必须加上‘ ’，返回对象）<br>console.dir（对象名）；可以查看属性和方法</li>
+<li>根据标签名获取<br>getElementsByTagName（‘ 标签名 ’）；（返回伪数组）<br>除了document，还可以获取某个元素（父元素）内部所有指定标签名的子元素<br>element.getElementsByTagName（‘ 标签名 ’）；<br>注意：父元素必须是单个对象（必须指明是哪一个元素对象），获取的时候不包括父元素自己</li>
+<li>通过HTML5新增的方法获取<br>document.getElementsByClassName（‘ 类名 ’）；<br>document.querySelector（‘选择器’）；（返回指定选择器的第一个元素对象）</li>
+<li>获取body元素<br>document.body；</li>
+<li>获取html元素<br>document.documentElement；</li>
+</ul>
+<h2 id="3-事件基础"><a href="#3-事件基础" class="headerlink" title="3.事件基础"></a>3.事件基础</h2><p>事件三要素：事件源、事件类型、事件处理程序</p>
+<ul>
+<li>事件源：事件被触发的对象</li>
+<li>事件类型：如何触发（鼠标点击？鼠标经过？……）<br>onclick&#x2F;onmouseover&#x2F;onmouseout&#x2F;onfocus&#x2F;onblur&#x2F;onmousemove&#x2F;onmouseup&#x2F;onmousedown</li>
+<li>事件处理程序：通过一个函数赋值的方式完成</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;btn&#x27;</span>);</span><br><span class="line">btn.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-操作元素"><a href="#4-操作元素" class="headerlink" title="4.操作元素"></a>4.操作元素</h2><h3 id="4-1改变元素内容"><a href="#4-1改变元素内容" class="headerlink" title="4.1改变元素内容"></a>4.1改变元素内容</h3><p>element.innerText(不可以识别html标签，并且还会去除空格和换行)</p>
+<p>element.innerHTML(可以识别html标签)</p>
+<h3 id="4-2常见元素的属性操作"><a href="#4-2常见元素的属性操作" class="headerlink" title="4.2常见元素的属性操作"></a>4.2常见元素的属性操作</h3><p>src、href、title、alt等</p>
+<h3 id="4-3表单元素的属性操作"><a href="#4-3表单元素的属性操作" class="headerlink" title="4.3表单元素的属性操作"></a>4.3表单元素的属性操作</h3><p>input.value&#x3D;‘	’；</p>
+<p>如果想要某个表单禁用，我么可以让这个button按钮写成如下：</p>
+<p>btn.onclick &#x3D; function（）{</p>
+<p>​		input.value &#x3D; ‘被点击了’；</p>
+<p>​		btn.disabled &#x3D; true；（or this.disabled &#x3D; true；）</p>
+<p>}</p>
+<p>type、value、disabled</p>
+<h3 id="4-4样式属性操作"><a href="#4-4样式属性操作" class="headerlink" title="4.4样式属性操作"></a>4.4样式属性操作</h3><p>通过js修改元素的大小、颜色。位置等样式</p>
+<p>1.element.style（行内样式操作） </p>
+<p>this（变量名）.style.属性（驼峰命名法）&#x3D; ’  ‘ ；</p>
+<p>js修改style样式操作，产生的是行内样式，权重高</p>
+<p>lis[i].style.backgroundPosition&#x3D;‘0 -’+index+‘px’;</p>
+<p>2.element.className（类名样式操作）</p>
+<p>this（变量名）.className&#x3D;‘类名’；</p>
+<p>更改类名来改变样式</p>
+<h3 id="4-5排他思想"><a href="#4-5排他思想" class="headerlink" title="4.5排他思想"></a>4.5排他思想</h3><p>注意顺序不能颠倒，首先干掉其他人，再设置自己</p>
+<h3 id="4-6自定义属性的操作"><a href="#4-6自定义属性的操作" class="headerlink" title="4.6自定义属性的操作"></a>4.6自定义属性的操作</h3><ol>
+<li>获取属性值</li>
+</ol>
+<ul>
+<li>element.属性	获取属性值</li>
+<li>element.getAttribute（ ‘ 属性 ’ ）；</li>
+</ul>
+<p>区别：前一个获取内置属性值（元素本身自带的属性）；后一个主要获得自定义的属性（标准）程序员自定义的属性</p>
+<ol start="2">
+<li>设置元素属性值</li>
+</ol>
+<ul>
+<li>element.属性 &#x3D; ‘值’；</li>
+<li>element.setAttribute( ‘ 属性 ’ , ’ 值 ’ ) ;</li>
+</ul>
+<ol start="3">
+<li>移除元素</li>
+</ol>
+<ul>
+<li>element.removeAttribute( ‘  ’ ) ;</li>
+</ul>
+<h3 id="4-7H5自定义属性"><a href="#4-7H5自定义属性" class="headerlink" title="4.7H5自定义属性"></a>4.7H5自定义属性</h3><p>自定义属性目的:是为了保存并使用数据,有些数据可以保存到页面中而不用保存到数据库中</p>
+<p>自定义属性获取是通过getAttribute(‘属性’)获取</p>
+<p>但有些自定义属性很容易产生歧义</p>
+<p>H5规定自定义属性data_开头做为属性名并且赋值</p>
+<p>比如:&lt; div data-index&#x3D; “1” &gt; &lt; &#x2F;div &gt;</p>
+<p>dataset是一个集合,里面存放了所有以data开头的自定义属性</p>
+<p>console.log(div,dataset.index) &#x3D; console.log(div.getAttribbute(‘data-index’)) &#x3D; console.log(div.dataset[‘index’]);</p>
+<h2 id="5-节点操作"><a href="#5-节点操作" class="headerlink" title="5.节点操作"></a>5.节点操作</h2><p>利用节点层次关系来获取元素</p>
+<h3 id="5-1节点概念"><a href="#5-1节点概念" class="headerlink" title="5.1节点概念"></a>5.1节点概念</h3><p>节点至少拥有nodeType、nodeName和nodeValue这三个基本属性</p>
+<p>元素节点nodeType为1；属性节点nodeType为2；文本节点nodeType为3（文本节点包括文字、空格、换行等）</p>
+<h3 id="5-2节点层次"><a href="#5-2节点层次" class="headerlink" title="5.2节点层次"></a>5.2节点层次</h3><p>1.父级节点：parentNode<br>    元素.parentNode</p>
+<p>2.子级节点：childNodes<br>    包含所有节点类型，但只想要元素节点<br>    children可以只获取元素节点</p>
+<p>​	firstchild、lastchild、firstElementChild、lastElementChild（后两个有兼容性问题）</p>
+<p>​	实际开发用children[i]来获取第一个或最后一个</p>
+<p>3.兄弟节点：nextSibling（包含所有节点）、previousSibling、nextElementSibling、previousElementSibling</p>
+<p>4.创建和添加节点</p>
+<p>​	document.createElement（‘tagName’）</p>
+<p>​	node.appendChild（child）类似于css里面的after伪数组</p>
+<p>​	node.insertBefore（child，指定元素）</p>
+<p>5.删除节点</p>
+<p>​	node.removeChild（child）</p>
+<p>6.复制节点</p>
+<p>node.cloneNode（）（）为空或为0为浅拷贝，只复制标签，不复制厘米的内容，true则是深拷贝</p>
+<h3 id="5-3三种动态创建元素区别"><a href="#5-3三种动态创建元素区别" class="headerlink" title="5.3三种动态创建元素区别"></a>5.3三种动态创建元素区别</h3><ul>
+<li>document.write()<br>document.write(‘<div> 123 </div>&gt;’)</li>
+<li>element.innerHTMML</li>
+<li>document.createElement()</li>
+</ul>
+<h2 id="6-事件高级"><a href="#6-事件高级" class="headerlink" title="6.事件高级"></a>6.事件高级</h2><h3 id="6-1注册事件（绑定事件）"><a href="#6-1注册事件（绑定事件）" class="headerlink" title="6.1注册事件（绑定事件）"></a>6.1注册事件（绑定事件）</h3><p>传统注册方式：</p>
+<ul>
+<li>利用on开头的事件onclick</li>
+<li>&lt; button onclick &#x3D; “alert(‘hi~’)” &gt;&lt; &#x2F;button &gt;</li>
+<li>btn.onclick &#x3D; function() {}</li>
+<li>特点：注册事件的唯一性（后面的注册事件会把之前的覆盖）</li>
+</ul>
+<p>方法监听注册方式：</p>
+<ul>
+<li><p>addEventListenet()它是一个方法</p>
+<p>eventTarget.addEventListener（type，listener，useCapture）</p>
+<p>将指定的监听器注册到eventTraget（目标对象）上，当该对象触发指定的事件时，就会执行事件处理函数</p>
+<p>type：事件类型字符串，比如click、mouseover，注意不带on，加引号</p>
+<p>listener：事件处理函数</p>
+<p>useCapture：可选参数，是一个bool值，默认是false</p>
+<p>例子：btn.eventTarget.addEventListener（‘click’,function(){ }）</p>
+<p>也可以外联，function fn（）{}，listener写fn</p>
+</li>
+<li><p>特点：同一个元素同一个事件可以注册多个监听器（按照顺序依次执行）</p>
+</li>
+</ul>
+<h3 id="6-2删除事件（解绑事件）"><a href="#6-2删除事件（解绑事件）" class="headerlink" title="6.2删除事件（解绑事件）"></a>6.2删除事件（解绑事件）</h3><p>传统注册方式：</p>
+<p>例：btn.onclick&#x3D;null；</p>
+<p>方法监听注册方式：</p>
+<p>例：btn.removeEventListener（‘click’，listener），用外联的方式  </p>
+<h3 id="6-3DOM的事件流"><a href="#6-3DOM的事件流" class="headerlink" title="6.3DOM的事件流"></a>6.3DOM的事件流</h3><p>分为三个阶段：</p>
+<ol>
+<li>捕获阶段</li>
+<li>当前目标阶段</li>
+<li>冒泡阶段</li>
+</ol>
+<p>事件发生时会在元素节点之间按照特定的顺序传播，这个传播过程即DOM事件流</p>
+<p>注意：</p>
+<ol>
+<li>JS代码中只能执行捕获或者冒泡其中的一个阶段</li>
+<li>onclick和attachEvent只能得到冒泡阶段</li>
+<li>addEventListener（）第三个参数如果是true，表示在事件捕获阶段调用事件处理程序；如果是false，表示在事件冒泡阶段调用事件处理</li>
+<li>有些事件是没有冒泡的，比如onblur、onfocus、onmouseenter、onmouseleave</li>
+<li>实际开发中我们很少使用事件捕获，我们更关注事件冒泡</li>
+</ol>
+<h3 id="6-4事件对象"><a href="#6-4事件对象" class="headerlink" title="6.4事件对象"></a>6.4事件对象</h3><p>例子：</p>
+<p>div.onclick &#x3D; function（event）{ }</p>
+<p>event就是事件对象</p>
+<p>事件对象只有有了事件才会存在，它是系统给我们自动创建的，不需要我们传递参数</p>
+<p>e.target返回的是触发事件的对象（元素）	this返回的是绑定事件的对象（元素）</p>
+<p>e.type返回事件类型</p>
+<p>e.preventDefault()阻止默认行为（事件）	让链接不跳转或者让提交按钮不提交	return false也可以</p>
+<p>e.stopPropagation()阻止冒泡</p>
+<h3 id="6-5事件委托（代理、委派）"><a href="#6-5事件委托（代理、委派）" class="headerlink" title="6.5事件委托（代理、委派）"></a>6.5事件委托（代理、委派）</h3><p>事件委托也称为事件代理，在jQuery里面称为事件委派</p>
+<p>事件委托的原理：不是每个子节点单独设置监听器，而是事件监听器设置在其父节点上，然后利用冒泡原理影响设置每个子节点</p>
+<p>比如：给ul注册点击事件，然后利用事件对象的target来找到当前点击的li，因为点击li，事件会冒泡到ul上，ul有注册事件，就会触发监听器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>);</span><br><span class="line">ul.<span class="title function_">addEventListener</span>(<span class="params"><span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span>(e)</span>)</span><br><span class="line">&#123;</span><br><span class="line">	e.<span class="property">target</span>.<span class="property">style</span>.<span class="property">backgroundColor</span> = <span class="string">&#x27;pink&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-6常用的鼠标事件"><a href="#6-6常用的鼠标事件" class="headerlink" title="6.6常用的鼠标事件"></a>6.6常用的鼠标事件</h3><ol>
+<li><p>禁止鼠标右键菜单<br>contextmenu主要控制应该何时显示上下文菜单，主要用于程序员取消默认的上下文菜单document.addEventListener(‘contextmenu’,function(e)){<br>e.preventDefault();<br>}</p>
+</li>
+<li><p>禁止鼠标选中<br>selectstart（开始选中）</p>
+<p>document.addEventListener(‘selectstart’,function(e)){<br>e.preventDefault();<br>}</p>
+</li>
+<li><p>鼠标事件对象<br>MouseEvent<br>e.clientX , e.clientY获取鼠标点击在可视区域的x和y坐标<br>e.pageX(Y)返回文档页面的x和y坐标<br>e.screenX(Y)返回电脑屏幕的x和y坐标</p>
+</li>
+</ol>
+<h3 id="6-7常用的键盘事件"><a href="#6-7常用的键盘事件" class="headerlink" title="6.7常用的键盘事件"></a>6.7常用的键盘事件</h3><p>onkeyup:某个键盘按键被松开时触发<br>document.onkeyup &#x3D; function(){</p>
+<p>​		console.log(‘我弹起了’);</p>
+<p>}</p>
+<p>document.addEventListener(‘keyup’,function(){……}) </p>
+<p>onkeydown:某个键盘按键被按下时触发</p>
+<p>onkeypress:某个键盘按键被按下时触发,但是它不识别功能键,比如ctrl shift 箭头等</p>
+<p>键盘事件对象(以上不区分大小写,除了keypress)</p>
+<p>keyCode返回键盘的ASCII码值</p>
+<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>BOM即浏览器对象模型，它提供了独立于内容而与浏览器窗口进行交互的对象，其核心对象是window</p>
+<p>window对象是浏览器的顶级对象，它具有双重角色</p>
+<ol>
+<li>它是JS访问浏览器窗口的一个接口</li>
+<li>它是一个全局对象，定义在全局作用域中的变量，函数都会变成window对象的属性和方法（在调用时可以省略window）</li>
+</ol>
+<p>window下的一个特殊属性window.name</p>
+<h2 id="2-window对象的常见事件"><a href="#2-window对象的常见事件" class="headerlink" title="2.window对象的常见事件"></a>2.window对象的常见事件</h2><h3 id="2-1窗口加载事件"><a href="#2-1窗口加载事件" class="headerlink" title="2.1窗口加载事件"></a>2.1窗口加载事件</h3><p>window.onload &#x3D; function（）{ };<br>or<br>window.addEventListener（’load’，function（）{ }）；</p>
+<p>document.addEventListener（‘DOMContentLoaded’，function( ){ }）;</p>
+<p>这个事件触发时，仅当DOM加载我完成，但不包括式表、图片、flash等等</p>
+<h3 id="2-2调整窗口大小事件"><a href="#2-2调整窗口大小事件" class="headerlink" title="2.2调整窗口大小事件"></a>2.2调整窗口大小事件</h3><p>window.onresize &#x3D; function( ){ };</p>
+<p>window.addEventListener（’resize’，function（）{ }）；</p>
+<p>window.innerWidth</p>
+<h2 id="3-定时器"><a href="#3-定时器" class="headerlink" title="3.定时器"></a>3.定时器</h2><h3 id="3-1setTimeout（）"><a href="#3-1setTimeout（）" class="headerlink" title="3.1setTimeout（）"></a>3.1setTimeout（）</h3><p>window.setTimeout（调用函数，[延迟的毫秒数]）；<br>（window可以省略，调用函数可以写function（）{}，也可以写函数名，函数写外面）</p>
+<p>停止setTimeout（）定时器</p>
+<p>window.clearTimeout（timeoutID）；<br>（window可以省略）</p>
+<h3 id="3-2setInterval（）"><a href="#3-2setInterval（）" class="headerlink" title="3.2setInterval（）"></a>3.2setInterval（）</h3><p>与setTimeout（）的区别，每隔一段时间就调用一次函数</p>
+<p>clearInterval（）</p>
+<h3 id="3-3this"><a href="#3-3this" class="headerlink" title="3.3this"></a>3.3this</h3><p>this一般指向的是那个调用它的对象</p>
+<ul>
+<li>全局作用域或者普通函数中this指向全局对象window</li>
+<li>方法调用中谁调用this指向谁</li>
+<li>构造函数中this指向构造函数的实例</li>
+</ul>
+<h2 id="4-JS执行机制"><a href="#4-JS执行机制" class="headerlink" title="4.JS执行机制"></a>4.JS执行机制</h2><h3 id="4-1JS是单线程"><a href="#4-1JS是单线程" class="headerlink" title="4.1JS是单线程"></a>4.1JS是单线程</h3><h3 id="4-2同步和异步"><a href="#4-2同步和异步" class="headerlink" title="4.2同步和异步"></a>4.2同步和异步</h3><ul>
+<li><p>同步</p>
+<p>同步任务都是在主线程上执行，形成一个执行线</p>
+</li>
+<li><p>异步</p>
+<p>JS的异步是通过回调函数实现的，一般而言，异步任务有以下三种类型</p>
+<ol>
+<li>普通事件，如click、resize等</li>
+<li>资源加载，如load、error等</li>
+<li>定时器，包括setInerval、setTimeout等</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-3JS执行机制"><a href="#4-3JS执行机制" class="headerlink" title="4.3JS执行机制"></a>4.3JS执行机制</h3><p>由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为事件循环</p>
+<h2 id="5-location对象"><a href="#5-location对象" class="headerlink" title="5.location对象"></a>5.location对象</h2><h3 id="5-1"><a href="#5-1" class="headerlink" title="5.1"></a>5.1</h3><p>window对象给我们提供了一个location属性用于获取或设置窗体的URL，并且可以用于解析URL。因为这个属性返回的是一个对象，所以我们将这个属性也称为location对象</p>
+<table>
+<thead>
+<tr>
+<th>location对象属性</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>location.href</td>
+<td>获取或者设置整个URL</td>
+</tr>
+<tr>
+<td>location.host</td>
+<td>返回主机（域名）</td>
+</tr>
+<tr>
+<td>location.port</td>
+<td>返回端口号 如果未写返回 空字符串</td>
+</tr>
+<tr>
+<td>location.pathname</td>
+<td>返回路径</td>
+</tr>
+<tr>
+<td>location.search</td>
+<td>返回参数</td>
+</tr>
+<tr>
+<td>location.hash</td>
+<td>返回片段 #后面内容常见于链接 锚点</td>
+</tr>
+</tbody></table>
+<p>location.href类似与超链接，跳转到另一个页面</p>
+<h3 id="5-2location对象的方法"><a href="#5-2location对象的方法" class="headerlink" title="5.2location对象的方法"></a>5.2location对象的方法</h3><p>location.assign（）跟href一样，可以跳转页面（也称为重定向页面）</p>
+<p>location.replace（）替换当前页面，因为不记录历史，所以不能后退页面</p>
+<p>location.reload（）重新加载页面，相当于刷新按钮或者F5如果参数为true，强制双星ctrl+F5</p>
+<h2 id="6-navigator对象"><a href="#6-navigator对象" class="headerlink" title="6.navigator对象"></a>6.navigator对象</h2><p>navigator.userAgent用来判断用什么浏览器打开，从而显示pc端或移动端的页面</p>
+<h2 id="7-history对象"><a href="#7-history对象" class="headerlink" title="7.history对象"></a>7.history对象</h2><p>history对象方法，back（）、forward（）、go（参数，如果参数为1前进1个页面，参数为-1后退1个页面）</p>
+<h1 id="PC端网页特效"><a href="#PC端网页特效" class="headerlink" title="PC端网页特效"></a>PC端网页特效</h1><h2 id="1-元素偏移量offset系列"><a href="#1-元素偏移量offset系列" class="headerlink" title="1.元素偏移量offset系列"></a>1.元素偏移量offset系列</h2><ul>
+<li>获得元素距离带有定位元素的位置</li>
+<li>获取元素自身的大小（宽度高度）</li>
+</ul>
+<p>注意：返回的数值都不带单位</p>
+<p>element.offsetTop(返回相对带有定位父元素上方的偏移)、offsetLeft()、offsetWidth(返回自身包括padding、边框、内容区的宽度)、offsetHeight()、offsetParent(返回带有定位的父级元素，若父级都没有定位，返回body)</p>
+<p>offset和style的区别</p>
+<p>offse可以得到任意样式表中的样式值，并且没有单位，包含padding和border，只能读值</p>
+<p>style只能得到行内样式表中的样式值，带单位的字符串，不包含padding和border，可以读和写</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/08/HTML+CSS/" rel="next" title="HTML+CSS笔记">
+      HTML+CSS笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr Wang"
+      src="/images/pig.jpg">
+  <p class="site-author-name" itemprop="name">Mr Wang</p>
+  <div class="site-description" itemprop="description">stu（dying）</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangbobo1122" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangbobo1122" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr Wang</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">32k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">29 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '16px',
+  right: '16px',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: false,
+  label: '🌓',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+if (window.darkmode && !window.darkmode.isActivated()) {
+  window.darkmode.toggle();
+  var toggleButtons = document.getElementsByClassName("darkmode-toggle");
+  for (i = 0; i < toggleButtons.length; i++) {
+    toggleButtons[i].classList.add("darkmode-toggle--white");
+  }
+}
+</script>
+
+</body>
+</html>
